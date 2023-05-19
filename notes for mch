@@ -1,8 +1,8 @@
-lambda
+#lambda
 
 
-stop and start ec2 with endpoint
-get new IP and assign in route53
+#stop and start ec2 with endpoint
+#get new IP and assign in route53
 
 #stop:
 import boto3
