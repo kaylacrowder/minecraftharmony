@@ -28,7 +28,8 @@ resource "aws_iam_policy" "ec2_policy" {
       {
         Action = [
           "ec2:StopInstances",
-          "ec2:StartInstances"
+          "ec2:StartInstances",
+          "ec2:DescribeInstances"
         ]
         Effect   = "Allow"
         Resource = "*"
@@ -43,5 +44,10 @@ resource "aws_iam_policy" "ec2_policy" {
 
 resource "aws_iam_role_policy_attachment" "lambda_policy_attachment" {
   policy_arn = aws_iam_policy.ec2_policy.arn
+  role       = aws_iam_role.lambda_role.name
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_policy_attachment_2" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
   role       = aws_iam_role.lambda_role.name
 }
